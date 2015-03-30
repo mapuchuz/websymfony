@@ -73,7 +73,7 @@ class Article
     /**
      *
      * @var User
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="articles")
      */
     private $author;
     
@@ -264,7 +264,7 @@ class Article
     public function setAuthor(\HB\BlogBundle\Entity\User $author = null)
     {
         $this->author = $author;
-
+ 
         return $this;
     }
 

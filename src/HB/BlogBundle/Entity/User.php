@@ -77,7 +77,13 @@ class User
      */
     private $enabled;
 
-
+    /**
+     *
+     * @var Article[]
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="author") 
+     */
+    private $articles;
+  
     /**
      * Get id
      *
@@ -270,5 +276,57 @@ class User
     public function getEnabled()
     {
         return $this->enabled;
+    }
+    
+    /**
+     * 
+     * @return string
+     */
+    public function getNameLogin() {
+        return $this->name."_".$this->login;
+    }
+        
+    
+            
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add articles
+     *
+     * @param \HB\BlogBundle\Entity\Article $articles
+     * @return User
+     */
+    public function addArticle(\HB\BlogBundle\Entity\Article $article)
+    {
+        $this->articles[] = $article;
+        $article->setAuthor($this);
+        return $this;
+    }
+
+    /**
+     * Remove articles
+     *
+     * @param \HB\BlogBundle\Entity\Article $articles
+     */
+    public function removeArticle(\HB\BlogBundle\Entity\Article $article)
+    {
+        $article->setAuthor(null);
+        $this->articles->removeElement($article);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 }
