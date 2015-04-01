@@ -5,9 +5,14 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="{{ asset('/css/layout.css') }}" rel="stylesheet" />
         <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" />
     </head>
     <body>
+        {% block menu %}
+            {% include ":blog:menu.html.twig" %}
+        {% endblock %}
+        
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
         <script src="http://code.jquery.com/jquery.js"></script>

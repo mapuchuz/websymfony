@@ -226,7 +226,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  color: #333333;
+    /*color: blue;*/
   background-color: #ffffff;
 }
 
@@ -1107,6 +1107,7 @@ input,
 textarea,
 .uneditable-input {
   width: 206px;
+  background-color: orange;
 }
 
 textarea {
@@ -1295,6 +1296,7 @@ textarea::-webkit-input-placeholder {
 
 .input-large {
   width: 210px;
+  color: blue;
 }
 
 .input-xlarge {

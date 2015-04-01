@@ -3,6 +3,8 @@
 namespace HB\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * User
@@ -22,28 +24,43 @@ class User
     private $id;
 
     /**
-     * @var string
+     * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=255)
+     *  @Assert\Email(
+     *     message = "'{{ value }}' n'est pas un email valide.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
     /**
-     * @var string
+     * @var string $name
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre nom ne peut pas contenir de nombre"
+     * )
+     * @Assert\Regex(
+     *     pattern="/[A-Z]{4}/",
+     *     match=true,
+     *     message="Votre nom ne peut pas contenir de minus"
+     * )
      */
     private $name;
 
     /**
-     * @var string
+     * @var string $login
      *
      * @ORM\Column(name="login", type="string", length=255)
+     * 
      */
     private $login;
 
     /**
-     * @var string
+     * @var string $password
      *
      * @ORM\Column(name="password", type="string", length=255)
      */
@@ -53,25 +70,27 @@ class User
      * @var \DateTime
      *
      * @ORM\Column(name="creationDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $creationDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTime $lastEditDate
      *
      * @ORM\Column(name="lastEditDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $lastEditDate;
 
     /**
-     * @var \DateTime
-     *
+     * @var \DateTime $birthDate
      * @ORM\Column(name="birthDate", type="date")
+     * @Assert\DateTime()
      */
     private $birthDate;
 
     /**
-     * @var string
+     * @var bool $enabled
      *
      * @ORM\Column(name="enabled", type="string", length=255)
      */
@@ -84,6 +103,24 @@ class User
      */
     private $articles;
   
+     /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        // Imaginons que vous avez un tableau de noms bidons
+
+        // Vérifie si le nom est bidon
+        if ($this->name=="POPOL") {
+            $context->addViolationAt(
+                'Name',
+                'POPOL n est pas ici !',
+                array(),
+                null
+            );
+        }
+    }
+    
     /**
      * Get id
      *

@@ -23,7 +23,8 @@ class ArticleController extends Controller
      *
      * @Route("/", name="article")
      * @Method("GET")
-     * @Template()
+     * @Template("HBBlogBundle:Article:index.html.twig")
+     * Template("HBBlogBundle::layout.html.twig")
      */
     public function indexAction()
     {

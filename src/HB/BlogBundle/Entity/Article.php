@@ -3,6 +3,7 @@
 namespace HB\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
@@ -22,16 +23,18 @@ class Article
     private $id;
 
     /**
-     * @var string
+     * @var string $title
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank(message="coucou")
      */
     private $title;
 
     /**
-     * @var string
+     * @var string $content
      *
      * @ORM\Column(name="content", type="text")
+     * @Assert\NotBlank()
      */
     private $content;
 
@@ -39,41 +42,45 @@ class Article
      * @var \DateTime
      *
      * @ORM\Column(name="creationDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $creationDate;
 
     /**
-     * @var \DateTime
+     * @var datetime   $lastEditDate 
      *
      * @ORM\Column(name="lastEditDate", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $lastEditDate;
 
     /**
-     * @var \DateTime
+     * @var datetime $publishDate
      *
      * @ORM\Column(name="publishDate", type="datetime")
+     * @Assert\DateTime()
      */
     private $publishDate;
 
     /**
-     * @var boolean
+     * @var boolean $published
      *
      * @ORM\Column(name="published", type="boolean")
      */
     private $published;
 
   /**
-     * @var boolean
+     * @var string $enabled
      *
-     * @ORM\Column(name="enabled", type="boolean")
+     * ORM\Column(name="enabled", type="integer")
      */
     private $enabled;
 
     /**
      *
-     * @var User
+     * @var User $author
      * @ORM\ManyToOne(targetEntity="User", inversedBy="articles")
+     * @Assert\Valid
      */
     private $author;
     
