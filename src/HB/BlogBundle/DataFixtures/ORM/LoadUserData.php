@@ -11,7 +11,7 @@ namespace HB\BlogBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Acme\HelloBundle\Entity\User;
+use HB\BlogBundle\Entity\User;
 
 class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -24,7 +24,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $monUser = new User();
-        $monUser->setName('user fixturé n°3');
+        $monUser->setName('user fixturé n°7');
         $monUser->setLogin('ouaga');
         $monUser->setPassword('secret');
         $monUser->setEmail('vincent.demolombe@sfr.fr');
@@ -35,7 +35,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($monUser);
         
         $monUser2 = new User();
-        $monUser2->setName('user fixturé n°4');
+        $monUser2->setName('user fixturé n°8');
         $monUser2->setLogin('dougou');
         $monUser2->setPassword('secret2');
         $monUser2->setEmail('mapuchuz@gmail.com');
@@ -46,6 +46,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($monUser2);
         
         $manager->flush();
+        
+        //On stocke dans le Repository de Fixtures des objets à partager
+        $this->addReference("user1", $monUser);
+        $this->addReference("user2", $monUser2);
     }
 
     public function getOrder() {
