@@ -27,6 +27,7 @@ class ArticleType extends AbstractType
                 'property'=>'name',
                 'required'=>false,
                 'attr'=>array('class'=>'ici') )   )
+            ->add('banner', new ImageType())     //formulaire imbriqué!!!    
         ;
     }
     
