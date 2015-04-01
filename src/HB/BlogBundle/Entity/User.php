@@ -69,7 +69,7 @@ class User
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="creationDate", type="datetime")
+     * @ORM\Column(name="creationDate", type="datetime", nullable=true)
      * @Assert\DateTime()
      */
     private $creationDate;
@@ -77,14 +77,14 @@ class User
     /**
      * @var \DateTime $lastEditDate
      *
-     * @ORM\Column(name="lastEditDate", type="datetime")
+     * @ORM\Column(name="lastEditDate", type="datetime",  nullable=true)
      * @Assert\DateTime()
      */
     private $lastEditDate;
 
     /**
      * @var \DateTime $birthDate
-     * @ORM\Column(name="birthDate", type="date")
+     * @ORM\Column(name="birthDate", type="date",  nullable=true)
      * @Assert\DateTime()
      */
     private $birthDate;
