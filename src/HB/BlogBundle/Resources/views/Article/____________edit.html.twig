@@ -1,17 +1,17 @@
 {% extends 'HBBlogBundle::layout.html.twig' %}
 
 {% block content -%}
-    <h3>User edit2</h3>
+    <h3>Article edit</h3>
 
-    {{ form(edit_form) }} 
-
+    {{ form(edit_form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('user') }}">
+        <a href="{{ path('article') }}">
             Back to the list
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+
 {% endblock %}

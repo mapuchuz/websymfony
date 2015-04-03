@@ -91,6 +91,8 @@ class ArticleController extends Controller
      */
     public function newAction()
     {
+        if(!$this->get('security.context')->isGranted('ROLE_USER'))
+            $this->redirect ($this->generateUrl ('home'));
         $entity = new Article();
         $form   = $this->createCreateForm($entity);
 

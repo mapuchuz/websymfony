@@ -88,6 +88,7 @@ class Article
      *
      * @var Image
      * @ORM\OneToOne(targetEntity="Image", cascade="persist")
+     * ORM\OneToOne(targetEntity="Image", cascade="all")
      */
     private $banner;
     

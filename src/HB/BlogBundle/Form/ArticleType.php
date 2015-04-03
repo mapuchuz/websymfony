@@ -25,8 +25,9 @@ class ArticleType extends AbstractType
             ->add('author', 'entity',  array(
                 'class'=> 'HBBlogBundle:User',
                 'property'=>'name',
-                'required'=>false,
-                'attr'=>array('class'=>'ici') )   )
+                'required'=>false
+              //  ,'attr'=>array('class'=>'ici')
+                )   )
             ->add('banner', new ImageType())     //formulaire imbriqué!!!    
         ;
     }

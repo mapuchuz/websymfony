@@ -13,11 +13,25 @@ body {
     padding-left: 25px;   
 }
 
-.ici {
+.ici, input[type="text"].ici {
     color: blue;
     background-color: yellow;
 }
 
+input[type="text"] {
+    background-color: green;  
+}
+
+input[type="text"].djo {
+	background-color:yellow;
+	color:blue;
+}
+
+.gras {
+     font-weight: bold;
+     font-style: oblique;
+     background-color : blue;
+}
 .adroite {
     padding-left: 300px;
 }
