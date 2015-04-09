@@ -12,4 +12,36 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArticleRepository extends EntityRepository
 {
-}
+    private $limit=3;
+    
+    /**
+     * renvoie les articles d'une page
+     * 
+     * @param int $page
+     * @return array 
+     */
+    public function getHomepageArticles($page) {
+        $page--;
+        $offset=$page*$this->limit;
+        return $this->findBy( array('published' => true, 'enabled' => true)
+                             ,array('creationDate' => 'desc'),
+                                    $this->limit, $offset   );
+
+    }
+    
+    /**
+     * nombre de pages affichables
+     * @return int
+     */
+    public function getPageCount() {
+        $nombreArticle= $this->createQueryBuilder('a')
+                ->where('a.published=1')
+                ->andwhere('a.enabled=1')
+                ->select('count(a)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        
+        return (int) ceil($nombreArticle/$this->limit);
+           
+    }
+}   

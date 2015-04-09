@@ -70,9 +70,9 @@ class Article
     private $published;
 
   /**
-     * @var string $enabled
+     * @var boolean 
      *
-     * ORM\Column(name="enabled", type="integer")
+     * @ORM\Column(name="enabled", type="boolean")
      */
     private $enabled;
 

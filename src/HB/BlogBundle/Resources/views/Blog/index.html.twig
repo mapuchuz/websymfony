@@ -2,6 +2,8 @@
  
  {% block content %}
      <h2>Les articles du merveilleux hb blog bundle</h2>
+     <h3>Page {{ page }} sur {{ nbPages }} </h3>
+     <hr />
      {% for article in articles %}
          <article class="article">
              <h1>{{ article.title }}</h1>
@@ -11,8 +13,7 @@
              <p class="article_extrait">
                  {{ article.content|
                     length>50 
-                    ? article.content|slice(0,50)~"..." 
-                             
+                    ? article.content|slice(0,50)~"..."                             
                     : article.content  }} 
              </p>  
             <a href="">Lire la suite</a>
@@ -20,6 +21,9 @@
      {% endfor %}   
 
    {#très utile !     {{ dump(articles) }}  #}
-        
-        
+      <nav id="pagination">  
+          <a href="{{ lienPagePrecedente }}">Page Précédente</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="{{ lienPageSuivante }}">Page Suivante</a>
+      </nav>   
  {% endblock %}    

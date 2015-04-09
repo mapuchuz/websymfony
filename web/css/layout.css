@@ -23,19 +23,32 @@ input[type="text"] {
 }
 
 input[type="text"].djo {
-	background-color:yellow;
-	color:blue;
+    background-color:yellow;
+    color:blue;
 }
 
 .gras {
-     font-weight: bold;
-     font-style: oblique;
-     background-color : blue;
+    font-weight: bold;
+    font-style: oblique;
+    background-color : blue;
 }
-.adroite {
-    padding-left: 300px;
-}
+
 
 .agauche {
     border-style: solid, red, 1px;
+}
+
+#gauche {
+    border-width:2px;
+    border-style:double;
+    border-color:red;
+    width:30%;
+    height: 600px;
+    float:left;
+    margin-right: 50px;
+}
+#droite {
+    border-width:2px;
+    border-style:double;
+    border-color:blue;
 }

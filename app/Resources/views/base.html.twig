@@ -10,12 +10,16 @@
     </head>
     <body>
         {% block menu %}
-   {#         {% include ":blog:menu.html.twig" %} #}
            {% include ":blog:menu.html.twig" %} 
+        {% endblock %}
+        
+        {% block sidebar %}
+            <div id="gauche" name="sidebar"></div>
         {% endblock %}
         
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="{{asset('js/bootstrap.min.js')}}"></script>
         
