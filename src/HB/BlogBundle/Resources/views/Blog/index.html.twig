@@ -1,0 +1,25 @@
+ {% extends 'HBBlogBundle::layout.html.twig' %} 
+ 
+ {% block content %}
+     <h2>Les articles du merveilleux hb blog bundle</h2>
+     {% for article in articles %}
+         <article class="article">
+             <h1>{{ article.title }}</h1>
+             <p class="article_info">
+                 ajouté le {{ article.creationDate|date('Y-m-d H:i:s') }} par {{ article.author.name }}
+             </p>
+             <p class="article_extrait">
+                 {{ article.content|
+                    length>50 
+                    ? article.content|slice(0,50)~"..." 
+                             
+                    : article.content  }} 
+             </p>  
+            <a href="">Lire la suite</a>
+         </article>
+     {% endfor %}   
+
+   {#très utile !     {{ dump(articles) }}  #}
+        
+        
+ {% endblock %}    

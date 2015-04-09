@@ -1,0 +1,35 @@
+{% extends 'HBBlogBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h3>Article</h3>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ article.title }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ article.content }}</td>
+            </tr>
+            <tr>
+                <th>Creationdate</th>
+                <td>{{ article.creationDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ article.author.name }}</td>
+            </tr>
+            <tr>
+                <th>Author Details</th>
+                <td>{{ article.author.nameLogin }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
+
