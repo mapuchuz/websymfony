@@ -79,8 +79,8 @@ class Article
     /**
      *
      * @var User $author
-     * @ORM\ManyToOne(targetEntity="User")
-     *  ORM\ManyToOne(targetEntity="User", inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity="HB\UserBundle\Entity\User")
+     *  ORM\ManyToOne(targetEntity="HB\UserBundle\Entity\User", inversedBy="articles")
      * @Assert\Valid
      */
     private $author;
@@ -274,10 +274,10 @@ class Article
     /**
      * Set author
      *
-     * @param \HB\BlogBundle\Entity\User $author
+     * @param \HB\UserBundle\Entity\User $author
      * @return Article
      */
-    public function setAuthor(\HB\BlogBundle\Entity\User $author = null)
+    public function setAuthor(\HB\UserBundle\Entity\User $author = null)
     {
         $this->author = $author;
  
@@ -287,7 +287,7 @@ class Article
     /**
      * Get author
      *
-     * @return \HB\BlogBundle\Entity\User 
+     * @return \HB\UserBundle\Entity\User 
      */
     public function getAuthor()
     {

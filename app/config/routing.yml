@@ -1,3 +1,8 @@
+hb_user:
+    resource: "@HBUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 hb_blog:
     resource: "@HBBlogBundle/Controller/"
     type:     annotation
