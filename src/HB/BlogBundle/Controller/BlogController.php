@@ -15,27 +15,26 @@ class BlogController extends Controller {
      */
     public function indexAction($page = 1) {
         $em = $this->getDoctrine()->getManager();
-
-        $articles = $em->getRepository('HBBlogBundle:Article')
-                ->getHomepageArticles($page);
+        $repo=   $em->getRepository('HBBlogBundle:Article');
         
-        // nombre de pages affichables
-        $nbPage = $em->getRepository('HBBlogBundle:Article')->getPageCount();
-     
-        // lien vers la page suivante
-        $suiv = $page >= $nbPage ? $nbPage : $page + 1; //$suiv--;
-        $lienPageSuivante = $this->generateUrl("blog_index_page", array("page" => $suiv));
-
-        // lien vers la page précédente
-        $prec = $page <= 1 ? 1 : $page - 1; // $prec--;
-        $lienPagePrecedente = $this->generateUrl("blog_index_page", array("page" => $prec));
-
+        $articles = $repo
+                ->getHomepageArticles();
+        
+        $paginator  = $this->get('knp_paginator');
+    
+        $pagination = $paginator->paginate(
+            $articles,
+            $page /*page number*/,
+            7/*limit per page*/
+        );
+        
+        $pagination->setUsedRoute("blog_index_page");
+        $pagination->setTemplate('KnpPaginatorBundle:Pagination:twitter_bootstrap_pagination.html.twig');     # sliding pagination controls template
+        
         // envoi vers twig
-        return array('articles' => $articles,
-            'lienPageSuivante' => $lienPageSuivante,
-            'lienPagePrecedente' => $lienPagePrecedente,
-            'page' => $page,
-            'nbPages' => $nbPage);
+        return array(
+           'pagination' => $pagination
+        );
     }
 
     /**

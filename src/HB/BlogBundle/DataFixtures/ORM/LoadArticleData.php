@@ -20,22 +20,16 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $LeUser=    $this->getReference('user1');
-        $monArticle = new Article();
-        $monArticle->setTitle('article fixturé n°10');
-        $monArticle->setContent('Ce magnifique Article fut crée dans Doctrine:Fixture');
-        $monArticle->setPublished(true);
-        $monArticle->setAuthor($LeUser);
-        $manager->persist($monArticle);
-        
-        $LeUser2=    $this->getReference('user2');
-        $monArticle2 = new Article();
-        $monArticle2->setTitle('article fixturé n°20');
-        $monArticle2->setContent('Cet AUTRE magnifique Article fut crée dans Doctrine:Fixture');
-        $monArticle2->setPublished(true);
-        $monArticle2->setAuthor($LeUser2);
-        $manager->persist($monArticle2);
-        
+        for($ii=1;$ii<150;$ii++) {
+            $LeUser=    $this->getReference('user1');
+            $monArticle = new Article();
+            $monArticle->setTitle('article fixturé n°'.$ii);
+            $monArticle->setContent('Ce magnifique '.$ii+' ième Article fut crée dans Doctrine:Fixture');
+            $monArticle->setPublished(true);
+            $monArticle->setAuthor($LeUser);
+            $manager->persist($monArticle);
+        }    
+       
         $manager->flush();
         
     }

@@ -20,12 +20,12 @@ class ArticleRepository extends EntityRepository
      * @param int $page
      * @return array 
      */
-    public function getHomepageArticles($page) {
-        $page--;
-        $offset=$page*$this->limit;
+    public function getHomepageArticles($limit=null) {
+       // $page--;
+    //    $offset=$page*$this->limit;
         return $this->findBy( array('published' => true, 'enabled' => true)
-                             ,array('creationDate' => 'desc'),
-                                    $this->limit, $offset   );
+                             ,array('creationDate' => 'desc')
+                             ,$limit);//       $this->limit, $offset   );
 
     }
     

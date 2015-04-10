@@ -23,6 +23,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        
         $monUser = new User();
         $monUser->setName('user fixturé n°7');
         $monUser->setLogin('ouaga');
