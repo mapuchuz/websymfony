@@ -79,7 +79,8 @@ class Article
     /**
      *
      * @var User $author
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity="User")
+     *  ORM\ManyToOne(targetEntity="User", inversedBy="articles")
      * @Assert\Valid
      */
     private $author;
