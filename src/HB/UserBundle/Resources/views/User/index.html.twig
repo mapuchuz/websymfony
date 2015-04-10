@@ -3,13 +3,13 @@
 
 {% block content -%}
     
-    {{ dump(entities) }}
+{#    {{ dump(entities) }} #}   
     
-    {#
+    
     <h3>User list</h3>
 
     <table class="records_list">
-        <thead>
+{#        <thead>
             <tr>
                 <th>Id</th>
                 <th>Email</th>
@@ -22,21 +22,21 @@
                 <th>Enabled</th>
                 <th>Actions</th>
             </tr>
-        </thead>
+        </thead>#}
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.email }}</td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.login }}</td>
-                <td>{{ entity.password }}</td>
-                <td>{% if entity.creationDate %}{{ entity.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+ {#               <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+  #}              <td>{{ entity.email }}</td>
+         {#       <td>{{ entity.name }}</td> #}
+                <td>{{ entity.username }}</td>
+     {#           <td>{{ entity.plainpassword }}</td>
+               <td>{% if entity.creationDate %}{{ entity.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.lastEditDate %}{{ entity.lastEditDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.birthDate %}{{ entity.birthDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.enabled }}</td>
+     #}           <td>{{ entity.enabled }}</td>
                 <td>
-                <ul>
+   {#             <ul>
                     <li>
                         <a href="{{ path('user_show', { 'id': entity.id }) }}">show</a>
                     </li>
@@ -44,18 +44,18 @@
                         <a href="{{ path('user_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
-                </td>
+    #}            </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
         <ul>
-        <li>
+ {#       <li>
             <a href="{{ path('user_new') }}">
                 Create a new entry
             </a>
-        </li>
+ #}       </li>
     </ul>
-    #}
+    
     {% endblock %}
